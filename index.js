@@ -298,7 +298,11 @@ Mailchimp.prototype.batchWait = function (batch_id, done, opts) {
             console.log('batch status:', result.status, result.finished_operations + '/' + result.total_operations)
           }
           if (result.status == 'finished') {
-            resolve(result);
+            console.log(JSON.stringify(result, null, 3));
+            if(result.response_body_url){
+              resolve(result);
+            }
+            
             return;
           }
 
